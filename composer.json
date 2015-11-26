@@ -1,0 +1,16 @@
+{
+    "name": "bolovsky/php_excel_stubs",
+    "description": "PHP-excel stubs for iliaal extension",
+    "authors": [
+        {
+            "name": "Ricardo Lopes",
+            "email": "doutrust@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "autoload": {
+        "psr-0": {
+            "": "src/"
+        }
+    }
+}
