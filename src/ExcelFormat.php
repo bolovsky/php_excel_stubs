@@ -4,7 +4,7 @@
   | ExcelFormat                                                               |
   |                                                                           |
   | Reference file for NuSphere PHPEd (and possibly other IDE's) for use with |
-  | php_excel interface to libxl by Ilia Alshanetsky <ilia@ilia.ws>          |
+  | php_excel interface to libxl by Ilia Alshanetsky <ilia@ilia.ws>           |
   |                                                                           |
   | php_excel "PECL" style module (http://github.com/iliaal/php_excel)        |
   | libxl library (http://www.libxl.com)                                      |
@@ -12,7 +12,8 @@
   | Rob Gagnon <rgagnon24@gmail.com>                                          |
   +---------------------------------------------------------------------------+
 */
-class ExcelFormat {
+class ExcelFormat
+{
     const COLOR_BLACK = 8;
     const COLOR_WHITE = 9;
     const COLOR_RED = 10;
@@ -71,8 +72,6 @@ class ExcelFormat {
     const COLOR_GRAY80 = 63;
     const COLOR_DEFAULT_FOREGROUND = 64;
     const COLOR_DEFAULT_BACKGROUND = 65;
-    const COLOR_TOOLTIP = 81;
-    const COLOR_AUTO = 32767;
 
     const AS_DATE = 1;
     const AS_FORMULA = 2;
@@ -176,7 +175,8 @@ class ExcelFormat {
     * @param ExcelBook $book
     * @return ExcelFormat
     */
-    public function __construct($book) {
+    public function __construct(ExcelBook $book)
+    {
     } // __construct
 
     /**
@@ -185,7 +185,8 @@ class ExcelFormat {
     * @param int $color (optional, default=null) One of ExcelFormat::COLOR_* constants
     * @return int
     */
-    public function borderBottomColor($color = null) {
+    public function borderBottomColor($color = null)
+    {
     } // borderBottomColor
 
     /**
@@ -194,7 +195,8 @@ class ExcelFormat {
     * @param int $style (optional, default=null) One of ExcelFormat::BORDERSTYLE_* constants
     * @return int
     */
-    public function borderBottomStyle($style = null) {
+    public function borderBottomStyle($style = null)
+    {
     } // borderBottomStyle
 
     /**
@@ -203,7 +205,8 @@ class ExcelFormat {
     * @param int $color (optional, default=null) One of ExcelFormat::COLOR_* constants
     * @return int The color, or true if no value supplied for $color
     */
-    public function borderColor($color = null) {
+    public function borderColor($color = null)
+    {
     } // borderColor
 
     /**
@@ -212,7 +215,8 @@ class ExcelFormat {
     * @param int $color (optional, default=null) One of ExcelFormat::COLOR_* constants
     * @return int
     */
-    public function borderDiagonalColor($color = null) {
+    public function borderDiagonalColor($color = null)
+    {
     } // borderDiagonalColor
 
     /**
@@ -221,7 +225,8 @@ class ExcelFormat {
     * @param int $style (optional, default=null) One of ExcelFormat::BORDERDIAGONAL_* constants
     * @return int
     */
-    public function borderDiagonalStyle($style = null) {
+    public function borderDiagonalStyle($style = null)
+    {
     } // borderDiagonalStyle
 
     /**
@@ -230,7 +235,8 @@ class ExcelFormat {
     * @param int $color (optional, default=null) One of ExcelFormat::COLOR_* constants
     * @return int
     */
-    public function borderLeftColor($color = null) {
+    public function borderLeftColor($color = null)
+    {
     } // borderLeftColor
 
     /**
@@ -239,7 +245,8 @@ class ExcelFormat {
     * @param int $style (optional, default=null) One of ExcelFormat::BORDERSTYLE_* constants
     * @return int
     */
-    public function borderLeftStyle($style = null) {
+    public function borderLeftStyle($style = null)
+    {
     } // borderLeftStyle
 
     /**
@@ -248,7 +255,8 @@ class ExcelFormat {
     * @param int $color (optional, default=null) One of ExcelFormat::COLOR_* constants
     * @return int
     */
-    public function borderRightColor($color = null) {
+    public function borderRightColor($color = null)
+    {
     } // borderRightColor
 
     /**
@@ -257,7 +265,8 @@ class ExcelFormat {
     * @param int $style (optional, default=null) One of ExcelFormat::BORDERSTYLE_* constants
     * @return int
     */
-    public function borderRightStyle($style = null) {
+    public function borderRightStyle($style = null)
+    {
     } // borderRightStyle
 
     /**
@@ -266,7 +275,8 @@ class ExcelFormat {
     * @param int $style (optional, default=null) One of ExcelFormat::BORDERSTYLE_* constants
     * @return int The border style, or true if no value supplied for $style
     */
-    public function borderStyle($style = null) {
+    public function borderStyle($style = null)
+    {
     } // borderStyle
 
     /**
@@ -275,7 +285,8 @@ class ExcelFormat {
     * @param int $color (optional, default=null) One of ExcelFormat::COLOR_* constants
     * @return int
     */
-    public function borderTopColor($color = null) {
+    public function borderTopColor($color = null)
+    {
     } // borderTopColor
 
     /**
@@ -284,7 +295,8 @@ class ExcelFormat {
     * @param int $style (optional, default=null) One of ExcelFormat::BORDERSTYLE_* constants
     * @return int
     */
-    public function borderTopStyle($style = null) {
+    public function borderTopStyle($style = null)
+    {
     } // borderTopStyle
 
     /**
@@ -293,7 +305,8 @@ class ExcelFormat {
     * @param int $pattern (optional, default=null) One of ExcelFormat::FILLPATTERN_* constants
     * @return int
     */
-    public function fillPattern($pattern = null) {
+    public function fillPattern($pattern = null)
+    {
     } // fillPattern
 
     /**
@@ -302,7 +315,8 @@ class ExcelFormat {
     * @see ExcelFormat::setFont()
     * @return ExcelFont
     */
-    public function getFont() {
+    public function getFont()
+    {
     } // getFont
 
     /**
@@ -311,7 +325,8 @@ class ExcelFormat {
     * @param bool $hidden (optional, default=null)
     * @return bool
     */
-    public function hidden($hidden = null) {
+    public function hidden($hidden = null)
+    {
     } // hidden
 
     /**
@@ -321,7 +336,8 @@ class ExcelFormat {
     * @param int $halign_mode (optional, default=null) One of ExcelFormat::ALIGNH_* constants
     * @return int
     */
-    public function horizontalAlign($halign_mode = null) {
+    public function horizontalAlign($halign_mode = null)
+    {
     } // horizontalAlign
 
     /**
@@ -330,7 +346,8 @@ class ExcelFormat {
     * @param int $indent (optional, default=null) A number from 0-15
     * @return int
     */
-    public function indent($indent = null) {
+    public function indent($indent = null)
+    {
     } // indent
 
     /**
@@ -339,7 +356,8 @@ class ExcelFormat {
     * @param bool $locked (optional, default=null)
     * @return bool
     */
-    public function locked($locked) {
+    public function locked($locked)
+    {
     } // locked
 
     /**
@@ -348,7 +366,8 @@ class ExcelFormat {
     * @param int $number_format Number format identifier.  One of ExcelFormat::NUMFORMAT_* constants
     * @return int
     */
-    public function numberFormat($number_format) {
+    public function numberFormat($number_format = null)
+    {
     } // numberFormat
 
     /**
@@ -357,7 +376,8 @@ class ExcelFormat {
     * @param int $color (optional, default=null) One of ExcelFormat::COLOR_* constants
     * @return int
     */
-    public function patternBackgroundColor($color = null) {
+    public function patternBackgroundColor($color = null)
+    {
     } // patternBackgroundColor
 
     /**
@@ -366,7 +386,8 @@ class ExcelFormat {
     * @param int $color (optional, default=null) One of ExcelFormat::COLOR_* constants
     * @return int
     */
-    public function patternForegroundColor($color = null) {
+    public function patternForegroundColor($color = null)
+    {
     } // patternForegroundColor
 
     /**
@@ -375,7 +396,8 @@ class ExcelFormat {
     * @param int $angle (optional, default=null) 0 to 90 (rotate left 0-90 degrees), 91 to 180 (rotate right 1-90 degrees), or 255 for vertical text
     * @return int The angle of rotation, or false if setting an invalid value
     */
-    public function rotate($angle = null) {
+    public function rotate($angle = null)
+    {
     } // rotate
 
     /**
@@ -385,7 +407,8 @@ class ExcelFormat {
     * @param ExcelFont $font
     * @return bool
     */
-    public function setFont($font) {
+    public function setFont($font)
+    {
     } // setFont
 
     /**
@@ -394,7 +417,8 @@ class ExcelFormat {
     * @param bool $shrink (optional, default=null)
     * @return bool
     */
-    public function shrinkToFit($shrink = null) {
+    public function shrinkToFit($shrink = null)
+    {
     } // shrinkToFit
 
     /**
@@ -404,7 +428,8 @@ class ExcelFormat {
     * @param int $valign_mode (optional, default=null) One of ExcelFormat::ALIGNV_* constants
     * @return int
     */
-    public function verticalAlign($valign_mode = null) {
+    public function verticalAlign($valign_mode = null)
+    {
     } // verticalAlign
 
     /**
@@ -413,7 +438,8 @@ class ExcelFormat {
     * @param bool $wrap (optional, default=null)
     * @return bool
     */
-    public function wrap($wrap = null) {
+    public function wrap($wrap = null)
+    {
     } // wrap
 
 } // end ExcelFormat

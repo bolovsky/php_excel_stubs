@@ -4,7 +4,7 @@
   | ExcelBook                                                                 |
   |                                                                           |
   | Reference file for NuSphere PHPEd (and possibly other IDE's) for use with |
-  | php_excel interface to libxl by Ilia Alshanetsky <ilia@ilia.ws>          |
+  | php_excel interface to libxl by Ilia Alshanetsky <ilia@ilia.ws>           |
   |                                                                           |
   | php_excel "PECL" style module (http://github.com/iliaal/php_excel)        |
   | libxl library (http://www.libxl.com)                                      |
@@ -12,16 +12,33 @@
   | Rob Gagnon <rgagnon24@gmail.com>                                          |
   +---------------------------------------------------------------------------+
 */
-class ExcelBook {
+class ExcelBook
+{
+    const PICTURETYPE_DIB = 3;
+    const PICTURETYPE_EMF = 4;
+    const PICTURETYPE_JPEG = 1;
+    const PICTURETYPE_PICT = 5;
+    const PICTURETYPE_PNG = 0;
+    const PICTURETYPE_TIFF = 6;
+    const PICTURETYPE_WMF = 2;
+
+    const SCOPE_UNDEFINED = -2;
+    const SCOPE_WORKBOOK = -1;
+
+    const SHEETTYPE_CHART = 1;
+    const SHEETTYPE_SHEET = 0;
+    const SHEETTYPE_UNKNOWN = 2;
+
     /**
     * Create a new Excel workbook
     *
-    * @param string $license_name
-    * @param string $license_key
+    * @param string $license_name (optional, default=null)
+    * @param string $license_key (optional, default=null)
     * @param bool $excel_2007 (optional, default=false)
     * @return ExcelBook
     */
-    public function __construct($license_name, $license_key, $excel_2007 = false) {
+    public function __construct($license_name = null, $license_key = null, $excel_2007 = false)
+    {
     } // __construct
 
     /**
@@ -32,7 +49,8 @@ class ExcelBook {
     * @param int $sheet_number (optional, default=null) If supplied, the 0-based worksheet number to set as active
     * @return int 0-based active worksheet number
     */
-    public function activeSheet($sheet_number = null) {
+    public function activeSheet($sheet_number = null)
+    {
     } // activeSheet
 
     /**
@@ -42,7 +60,8 @@ class ExcelBook {
     * @param string $format_string
     * @return int The ID assigned to the new format
     */
-    public function addCustomFormat($format_string) {
+    public function addCustomFormat($format_string)
+    {
     } // addCustomFormat
 
     /**
@@ -51,7 +70,8 @@ class ExcelBook {
     * @param ExcelFont $font (optional, default=null) Font to copy
     * @return ExcelFont
     */
-    public function addFont($font = null) {
+    public function addFont($font = null)
+    {
     } // addFont
 
     /**
@@ -60,7 +80,8 @@ class ExcelBook {
     * @param ExcelFormat $format (optional, default=null) Format to copy
     * @return ExcelFormat
     */
-    public function addFormat($format = null) {
+    public function addFormat(ExcelFormat $format = null)
+    {
     } // addFormat
 
     /**
@@ -72,7 +93,8 @@ class ExcelBook {
     * @param string $filename
     * @return int A picture ID
     */
-    public function addPictureFromFile($filename) {
+    public function addPictureFromFile($filename)
+    {
     } // addPictureFromFile
 
     /**
@@ -84,7 +106,8 @@ class ExcelBook {
     * @param string $data
     * @return int A picture ID
     */
-    public function addPictureFromString($data) {
+    public function addPictureFromString($data)
+    {
     } // addPictureFromString
 
     /**
@@ -93,8 +116,18 @@ class ExcelBook {
     * @param string $name The name for the new worksheet
     * @return ExcelSheet The worksheet created
     */
-    public function addSheet($name) {
+    public function addSheet($name)
+    {
     } // addSheet
+
+    /**
+    * Returns BIFF version of binary file. Used for xls format only.
+    *
+    * @return int BIFF version
+    */
+    public function biffVersion()
+    {
+    } // biffVersion
 
     /**
     * Packs red, green, and blue components in color value.  Used for xlsx format only.
@@ -105,7 +138,8 @@ class ExcelBook {
     * @param int $blue
     * @return int
     */
-    public function colorPack($red, $green, $blue) {
+    public function colorPack($red, $green, $blue)
+    {
     } // colorPack
 
     /**
@@ -115,7 +149,8 @@ class ExcelBook {
     * @param int $color One of ExcelFormat::COLOR_* constants
     * @return array with keys "red"(int), "green"(int), and "blue"(int)
     */
-    public function colorUnpack($color) {
+    public function colorUnpack($color)
+    {
     } // colorUnpack
 
     /**
@@ -125,7 +160,8 @@ class ExcelBook {
     * @param int $sheet_number The 0-based number of the source worksheet to copy
     * @return ExcelSheet The worksheet created
     */
-    public function copySheet($name, $sheet_number) {
+    public function copySheet($name, $sheet_number)
+    {
     } // copySheet
 
     /**
@@ -134,7 +170,8 @@ class ExcelBook {
     * @param int $sheet_number 0-based worksheet number to delete
     * @return bool True if sheet deleted, false if $sheet_number invalid
     */
-    public function deleteSheet($sheet_number) {
+    public function deleteSheet($sheet_number)
+    {
     } // deleteSheet
 
     /**
@@ -144,7 +181,8 @@ class ExcelBook {
     * @see ExcelBook::setActiveSheet()
     * @return int 0-based active worksheet number
     */
-    public function getActiveSheet() {
+    public function getActiveSheet()
+    {
     } // getActiveSheet
 
     /**
@@ -152,7 +190,8 @@ class ExcelBook {
     *
     * @return array of ExcelFormat objects
     */
-    public function getAllFormats() {
+    public function getAllFormats()
+    {
     } // getAllFormats
 
     /**
@@ -162,16 +201,18 @@ class ExcelBook {
     * @param int $id
     * @return string
     */
-    public function getCustomFormat($id) {
+    public function getCustomFormat($id)
+    {
     } // getCustomFormat
 
     /**
     * Get the default font
     *
     * @see ExcelBook::setDefaultFont()
-    * @return array with keys "font"(string), and "font_size"(int)
+    * @return array with keys "font"(string) and "font_size"(int)
     */
-    public function getDefaultFont() {
+    public function getDefaultFont()
+    {
     } // getDefaultFont
 
     /**
@@ -179,8 +220,37 @@ class ExcelBook {
     *
     * @return string Description of last error that occurred, or false if no error
     */
-    public function getError() {
+    public function getError()
+    {
     } // getError
+
+    /**
+    * Returns a number of pictures in this workbook.
+    *
+    * @return int Number of pictures in Workbook
+    */
+    public function getNumPictures()
+    {
+    } // getNumPictures
+
+    /**
+    * Returns a picture at position index.
+    *
+    * @param int $index
+    * @return array with keys "data"(string) and "type"(int)
+    */
+    public function getPicture($index)
+    {
+    } // getPicture
+
+    /**
+    * Returns whether the R1C1 reference mode is active.
+    *
+    * @return bool
+    */
+    public function getRefR1C1()
+    {
+    } // getRefR1C1
 
     /**
     * Get an Excel worksheet
@@ -188,8 +258,53 @@ class ExcelBook {
     * @param int $sheet_number (optional, default=0) 0-based worksheet number
     * @return ExcelSheet or false if $sheet_number invalid
     */
-    public function getSheet($sheet_number = 0) {
+    public function getSheet($sheet_number = 0)
+    {
     } // getSheet
+
+    /**
+    * Get an excel sheet by name.
+    *
+    * @param string $name
+    * @param bool $case_insensitive (optional, default=false)
+    * @return ExcelSheet
+    */
+    public function getSheetByName($name, $case_insensitive = false)
+    {
+    } // getSheetByName
+
+    /**
+    * Inserts a new sheet to this book at position index, returns the sheet handle. Set initSheet
+    * to 0 if you wish to add a new empty sheet or use existing sheet's handle for copying.
+    *
+    * @param int $index
+    * @param string $name
+    * @param ExcelSheet $sheet (optional)
+    * @return ExcelSheet
+    */
+    public function insertSheet($index, $name, $sheet = null)
+    {
+    } // insertSheet
+
+    /**
+    * Returns whether the 1904 date system is active:
+    * true - 1904 date system,
+    * false - 1900 date system
+    *
+    * @return bool
+    */
+    public function isDate1904()
+    {
+    } // isDate1904
+
+    /**
+    * Returns whether the workbook is a template.
+    *
+    * @return bool
+    */
+    public function isTemplate()
+    {
+    } // isTemplate
 
     /**
     * Load Excel data string
@@ -197,7 +312,8 @@ class ExcelBook {
     * @param string $data
     * @return bool
     */
-    public function load($data) {
+    public function load($data)
+    {
     } // load
 
     /**
@@ -206,7 +322,8 @@ class ExcelBook {
     * @param string $filename
     * @return bool
     */
-    public function loadFile($filename) {
+    public function loadFile($filename)
+    {
     } // loadFile
 
     /**
@@ -216,11 +333,15 @@ class ExcelBook {
     * @param int $timestamp
     * @return float
     */
-    public function packDate($timestamp) {
+    public function packDate($timestamp)
+    {
     } // packDate
-    
+
     /**
     * Pack a date from single values into an Excel double
+    *
+    * with year=0, month=0 and day=0 you can generate a time-only value
+    * - if you click on a cell with time-format, in the "formula bar" will appear a time only (without date)
     *
     * @param int $year
     * @param int $month
@@ -230,7 +351,8 @@ class ExcelBook {
     * @param int $second
     * @return float
     */
-    public function packDateValues($year, $month, $day, $hour, $minute, $second) {
+    public function packDateValues($year, $month, $day, $hour, $minute, $second)
+    {
     } // packDateValues
 
     /**
@@ -239,7 +361,8 @@ class ExcelBook {
     * @see ExcelBook::setRGBMode()
     * @return bool
     */
-    public function rgbMode() {
+    public function rgbMode()
+    {
     } // rgbMode
 
     /**
@@ -248,7 +371,8 @@ class ExcelBook {
     * @param string $filename (optional, default=null)
     * @return mixed If $filename is null, returns string, otherwise returns bool true if OK, false if not
     */
-    public function save($filename = null) {
+    public function save($filename = null)
+    {
     } // save
 
     /**
@@ -259,8 +383,21 @@ class ExcelBook {
     * @param int $sheet_number 0-based worksheet to make active
     * @return bool
     */
-    public function setActiveSheet($sheet_number) {
+    public function setActiveSheet($sheet_number)
+    {
     } // setActiveSheet
+
+    /**
+    * Sets the date system mode:
+    * true - 1904 date system,
+    * false - 1900 date system (default)
+    *
+    * @param bool $date_type
+    * @return bool
+    */
+    public function setDate1904($date_type)
+    {
+    } // setDate1904
 
     /**
     * Set the default font and size
@@ -270,17 +407,30 @@ class ExcelBook {
     * @param string $font_size
     * @return void
     */
-    public function setDefaultFont($font_name, $font_size) {
+    public function setDefaultFont($font_name, $font_size)
+    {
     } // setDefaultFont
 
     /**
     * Set the locale<br>
     * possible values: '.1252' (Windows-1252 or Cp1252), '.OCP' (OEM CodePage), default: '.ACP' (ANSI CodePage) if empty
+    *
     * @param string $locale
     * @return void
     */
-    public function setLocale($locale) {
+    public function setLocale($locale)
+    {
     } // setLocale
+
+    /**
+    * Sets the R1C1 reference mode.
+    *
+    * @param bool $active
+    * @return void
+    */
+    public function setRefR1C1($active)
+    {
+    } // setRefR1C1
 
     /**
     * Sets RGB mode on or off
@@ -289,16 +439,41 @@ class ExcelBook {
     * @param bool $mode
     * @return void
     */
-    public function setRGBMode($mode) {
+    public function setRGBMode($mode)
+    {
     } // setRGBMode
+
+    /**
+    * Sets the template flag, if the workbook is template.
+    *
+    * @param bool $mode
+    * @return void
+    */
+    public function setTemplate($mode)
+    {
+    } // setTemplate
 
     /**
     * Get the number of worksheets inside a workbook
     *
     * @return int
     */
-    public function sheetCount() {
+    public function sheetCount()
+    {
     } // sheetCount
+
+    /**
+    * Returns type of sheet with specified index:
+    * 0 - sheet
+    * 1 - chart
+    * 2 - unknown
+    *
+    * @param int $sheet
+    * @return int
+    */
+    public function sheetType($sheet)
+    {
+    } // sheetType
 
     /**
     * Unpack an Excel double into a unix timestamp
@@ -307,7 +482,8 @@ class ExcelBook {
     * @param float $date
     * @return int
     */
-    public function unpackDate($date) {
+    public function unpackDate($date)
+    {
     } // unpackDate
 
 } // end ExcelBook
